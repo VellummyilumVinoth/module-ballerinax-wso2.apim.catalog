@@ -17,7 +17,6 @@
 import ballerina/http;
 import ballerina/jballerina.java;
 import ballerina/oauth2;
-import ballerina/log;
 
 configurable string serviceUrl = "https://apis.wso2.com/api/service-catalog/v1";
 configurable string username = "";
@@ -33,8 +32,6 @@ configurable string[] scopes = ["service_catalog:service_view", "apim:api_view",
 
 listener Listener 'listener = new Listener(port);
 
-final string[] publishedServiceIds = [];
-
 Client apimClient = check new (serviceUrl = serviceUrl, config = {
     auth: {
         username,
@@ -49,37 +46,9 @@ Client apimClient = check new (serviceUrl = serviceUrl, config = {
 });
 
 function publishArtifacts(ServiceArtifact[] artifacts) returns error? {
-    error? e = ();
     foreach ServiceArtifact artifact in artifacts {
-        Service|error res = apimClient->/services.post({
-            serviceMetadata: {
-                name: artifact.name,
-                description: artifact.description,
-                'version: artifact.version,
-                serviceKey: artifact.serviceKey,
-                serviceUrl: artifact.serviceUrl,
-                definitionType: artifact.definitionType,
-                securityType: artifact.securityType,
-                mutualSSLEnabled: artifact.mutualSSLEnabled,
-                definitionUrl: artifact.definitionUrl
-            },
-            inlineContent: artifact.definitionFileContent
-        });
-
-        // If there is an error, wait until other artifacts get published
-        if res is error {
-            e = res;
-            continue;
-        }
-
-        string? id = res?.id;
-        if id == () {
-            continue;
-        }
-
-        publishedServiceIds.push(id);
+        _ = check publishOrUpdateService(artifact);
     }
-    return e;
 }
 
 isolated function getArtifacts() returns ServiceArtifact[] = @java:Method {
@@ -101,18 +70,42 @@ function getServerCert(string? serverCert) returns http:ClientSecureSocket? {
     return {enable: false};
 }
 
-function removeExistingServices(Client apimClient) returns error? {
-    foreach string id in publishedServiceIds {
-        http:Response|error response = apimClient->/services/[id].delete();
-        if response is error {
-            log:printError("Error occurred while deleting the service: ", response, serviceId = id);
-            return response;
-        }
+function getServiceIdByKey(string serviceKey) returns string|error|() {
+    ServiceList res = check apimClient->/services.get('key = serviceKey);
+    Service[] services = res.list ?: [];
+    return services.length() > 0 ? services[0].id : ();
+}
 
-        if response.statusCode != 204 {
-            string responseMessage = (check response.getJsonPayload()).toJsonString();
-            log:printError("Failed to delete service: ", serviceId = id, message = responseMessage);
-            return error("Failed to delete the service with id: " + id, cause = responseMessage);
-        }
+function publishOrUpdateService(ServiceArtifact artifact) returns Service|error {
+    string|() serviceId = check getServiceIdByKey(artifact.serviceKey);
+    if serviceId is () {
+            return apimClient->/services.post({
+            serviceMetadata: {
+                name: artifact.name,
+                description: artifact.description,
+                'version: artifact.version,
+                serviceKey: artifact.serviceKey,
+                serviceUrl: artifact.serviceUrl,
+                definitionType: artifact.definitionType,
+                securityType: artifact.securityType,
+                mutualSSLEnabled: artifact.mutualSSLEnabled,
+                definitionUrl: artifact.definitionUrl
+            },
+            inlineContent: artifact.definitionFileContent
+        });
     }
+    return apimClient->/services/[serviceId].put({
+        serviceMetadata: {
+            name: artifact.name,
+            description: artifact.description,
+            'version: artifact.version,
+            serviceKey: artifact.serviceKey,
+            serviceUrl: artifact.serviceUrl,
+            definitionType: artifact.definitionType,
+            securityType: artifact.securityType,
+            mutualSSLEnabled: artifact.mutualSSLEnabled,
+            definitionUrl: artifact.definitionUrl
+        },
+        inlineContent: artifact.definitionFileContent
+    });
 }
