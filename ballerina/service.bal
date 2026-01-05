@@ -76,29 +76,10 @@ function getServiceIdByKey(string serviceKey) returns string|error|() {
     return services.length() > 0 ? services[0].id : ();
 }
 
-function updateExistingService(ServiceArtifact artifact) returns Service|error {
+function publishOrUpdateService(ServiceArtifact artifact) returns Service|error {
     string|() serviceId = check getServiceIdByKey(artifact.serviceKey);
     if serviceId is () {
-        return error("Service exists but serviceId could not be resolved");
-    }
-    return check apimClient->/services/[serviceId].put({
-        serviceMetadata: {
-            name: artifact.name,
-            description: artifact.description,
-            'version: artifact.version,
-            serviceKey: artifact.serviceKey,
-            serviceUrl: artifact.serviceUrl,
-            definitionType: artifact.definitionType,
-            securityType: artifact.securityType,
-            mutualSSLEnabled: artifact.mutualSSLEnabled,
-            definitionUrl: artifact.definitionUrl
-        },
-        inlineContent: artifact.definitionFileContent
-    });
-}
-
-function publishOrUpdateService(ServiceArtifact artifact) returns Service|error {
-    Service|error res = apimClient->/services.post({
+            return apimClient->/services.post({
             serviceMetadata: {
                 name: artifact.name,
                 description: artifact.description,
@@ -112,8 +93,19 @@ function publishOrUpdateService(ServiceArtifact artifact) returns Service|error 
             },
             inlineContent: artifact.definitionFileContent
         });
-    if res is http:ClientRequestError && res.detail().statusCode == 409 {
-        return updateExistingService(artifact);
     }
-    return res; 
+    return apimClient->/services/[serviceId].put({
+        serviceMetadata: {
+            name: artifact.name,
+            description: artifact.description,
+            'version: artifact.version,
+            serviceKey: artifact.serviceKey,
+            serviceUrl: artifact.serviceUrl,
+            definitionType: artifact.definitionType,
+            securityType: artifact.securityType,
+            mutualSSLEnabled: artifact.mutualSSLEnabled,
+            definitionUrl: artifact.definitionUrl
+        },
+        inlineContent: artifact.definitionFileContent
+    });
 }
