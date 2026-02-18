@@ -6,7 +6,7 @@ class = "io.ballerina.wso2.apim.catalog.ServiceCatalogCompilerPlugin"
 path = "../compiler-plugin/build/libs/wso2.apim.catalog-compiler-plugin-1.1.3-SNAPSHOT.jar"
 
 [[dependency]]
-path = "lib/ballerina-to-openapi-2.0.3.jar"
+path = "lib/ballerina-to-openapi-2.4.0.jar"
 
 [platform.java21]
 graalvmCompatible = true
