@@ -1,7 +1,7 @@
 {
     "Sales0:localhost:9601/sales0": {
         "serviceMetadata": {
-            "name": "/sales0FC87DCDD39",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9601/sales0",
@@ -15,7 +15,7 @@
     },
     "Sales0:www.example.com:9604/sales0": {
         "serviceMetadata": {
-            "name": "/sales0CF77B68F0C",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9604/sales0",
@@ -29,7 +29,7 @@
     },
     "Sales0:www.example.com:9600/sales0": {
         "serviceMetadata": {
-            "name": "/sales0941E9D523E",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9600/sales0",
@@ -43,7 +43,7 @@
     },
     "Sales0:www.example.com:9603/sales0": {
         "serviceMetadata": {
-            "name": "/sales0FDB2ADFEE8",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9603/sales0",
@@ -57,7 +57,7 @@
     },
     "Sales0:www.example.com:9602/sales0": {
         "serviceMetadata": {
-            "name": "/sales0197509A70C",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9602/sales0",

@@ -1,7 +1,7 @@
 {
     "Main Openapi Yaml:localhost:9702/": {
         "serviceMetadata": {
-            "name": "/88DE0EE5AE",
+            "name": "/",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Main Openapi Yaml:localhost:9702/",
@@ -15,7 +15,7 @@
     },
     "Main Openapi Yaml:localhost:9700/": {
         "serviceMetadata": {
-            "name": "/984DFB643A",
+            "name": "/",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Main Openapi Yaml:localhost:9700/",

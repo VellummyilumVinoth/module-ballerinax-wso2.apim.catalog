@@ -9,15 +9,15 @@ distribution-version = "2201.13.1"
 
 [[package]]
 org = "admin"
-name = "sample_project_7"
+name = "sample_project_12"
 version = "0.1.0"
 dependencies = [
-	{org = "ballerina", name = "graphql"},
 	{org = "ballerina", name = "http"},
-	{org = "ballerinax", name = "wso2.apim.catalog"}
+	{org = "ballerinax", name = "wso2.apim.catalog"},
+	{org = "ballerinax", name = "wso2.controlplane"}
 ]
 modules = [
-	{org = "admin", packageName = "sample_project_7", moduleName = "sample_project_7"}
+	{org = "admin", packageName = "sample_project_12", moduleName = "sample_project_12"}
 ]
 
 [[package]]
@@ -78,38 +78,6 @@ dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "os"},
 	{org = "ballerina", name = "time"}
-]
-
-[[package]]
-org = "ballerina"
-name = "graphql"
-version = "1.17.0"
-dependencies = [
-	{org = "ballerina", name = "auth"},
-	{org = "ballerina", name = "cache"},
-	{org = "ballerina", name = "crypto"},
-	{org = "ballerina", name = "file"},
-	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "io"},
-	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "jwt"},
-	{org = "ballerina", name = "lang.array"},
-	{org = "ballerina", name = "lang.regexp"},
-	{org = "ballerina", name = "lang.value"},
-	{org = "ballerina", name = "log"},
-	{org = "ballerina", name = "mime"},
-	{org = "ballerina", name = "oauth2"},
-	{org = "ballerina", name = "observe"},
-	{org = "ballerina", name = "task"},
-	{org = "ballerina", name = "time"},
-	{org = "ballerina", name = "uuid"},
-	{org = "ballerina", name = "websocket"}
-]
-modules = [
-	{org = "ballerina", packageName = "graphql", moduleName = "graphql"},
-	{org = "ballerina", packageName = "graphql", moduleName = "graphql.dataloader"},
-	{org = "ballerina", packageName = "graphql", moduleName = "graphql.parser"},
-	{org = "ballerina", packageName = "graphql", moduleName = "graphql.subgraph"}
 ]
 
 [[package]]
@@ -338,26 +306,6 @@ dependencies = [
 ]
 
 [[package]]
-org = "ballerina"
-name = "websocket"
-version = "2.15.1"
-dependencies = [
-	{org = "ballerina", name = "auth"},
-	{org = "ballerina", name = "constraint"},
-	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "io"},
-	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "jwt"},
-	{org = "ballerina", name = "lang.array"},
-	{org = "ballerina", name = "lang.runtime"},
-	{org = "ballerina", name = "lang.string"},
-	{org = "ballerina", name = "lang.value"},
-	{org = "ballerina", name = "log"},
-	{org = "ballerina", name = "oauth2"},
-	{org = "ballerina", name = "time"}
-]
-
-[[package]]
 org = "ballerinax"
 name = "wso2.apim.catalog"
 version = "1.2.0"
@@ -371,5 +319,24 @@ dependencies = [
 ]
 modules = [
 	{org = "ballerinax", packageName = "wso2.apim.catalog", moduleName = "wso2.apim.catalog"}
+]
+
+[[package]]
+org = "ballerinax"
+name = "wso2.controlplane"
+version = "1.1.0"
+dependencies = [
+	{org = "ballerina", name = "file"},
+	{org = "ballerina", name = "http"},
+	{org = "ballerina", name = "jballerina.java"},
+	{org = "ballerina", name = "jwt"},
+	{org = "ballerina", name = "lang.array"},
+	{org = "ballerina", name = "lang.runtime"},
+	{org = "ballerina", name = "log"},
+	{org = "ballerina", name = "os"},
+	{org = "ballerina", name = "uuid"}
+]
+modules = [
+	{org = "ballerinax", packageName = "wso2.controlplane", moduleName = "wso2.controlplane"}
 ]
 

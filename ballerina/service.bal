@@ -46,9 +46,14 @@ Client apimClient = check new (serviceUrl = serviceUrl, config = {
 });
 
 function publishArtifacts(ServiceArtifact[] artifacts) returns error? {
+    error? lastError = ();
     foreach ServiceArtifact artifact in artifacts {
-        _ = check publishOrUpdateService(artifact);
+        Service|error result = publishOrUpdateService(artifact);
+        if result is error {
+            lastError = result;
+        }
     }
+    return lastError;
 }
 
 isolated function getArtifacts() returns ServiceArtifact[] = @java:Method {

@@ -38,11 +38,11 @@ import io.swagger.v3.oas.models.OpenAPI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 import static io.ballerina.wso2.apim.catalog.utils.Constants.BALLERINA;
+import static io.ballerina.wso2.apim.catalog.utils.Constants.CONTROL_PLANE_PACKAGE_NAME;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_PACKAGE_NAME;
-import static io.ballerina.wso2.apim.catalog.utils.Constants.SLASH;
+import static io.ballerina.wso2.apim.catalog.utils.Constants.MODULE_NAME;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.createMd5Hash;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.generateBasePath;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.getDefinitionType;
@@ -58,7 +58,6 @@ import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFINITION_FILE_CON
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFINITION_TYPE;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFINITION_URL;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DESCRIPTION;
-import static io.ballerina.wso2.apim.catalog.utils.Constants.LOCALHOST;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.MD5;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.MUTUAL_SSL;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.MUTUAL_SSL_ENABLED;
@@ -92,6 +91,10 @@ public final class ServiceCatalog {
             Type originalType = ((BObject) serviceObj).getOriginalType();
             Module module = originalType.getPackage();
             if (module != null && module.equals(currentModule)) {
+                continue;
+            }
+            if (module != null && MODULE_NAME.equals(module.getOrg())
+                    && CONTROL_PLANE_PACKAGE_NAME.equals(module.getName())) {
                 continue;
             }
 
@@ -180,12 +183,8 @@ public final class ServiceCatalog {
     }
 
     private static void updateServiceUrl(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) {
-        String basePathConfig = httpServiceConfig.basePath;
-        String basePath = basePathConfig.equals(SLASH) ? "" : basePathConfig;
-        boolean isLocalHost = Objects.equals(httpServiceConfig.host, LOCALHOST);
         artifactValues.put(StringUtils.fromString(SERVICE_URL),
-                StringUtils.fromString(httpServiceConfig.host +
-                        (isLocalHost ? (COLON + httpServiceConfig.port) : "") + basePath));
+                StringUtils.fromString(httpServiceConfig.definitionUrl));
         artifactValues.put(StringUtils.fromString(DEFINITION_URL),
                 StringUtils.fromString(httpServiceConfig.definitionUrl));
     }
@@ -254,14 +253,10 @@ public final class ServiceCatalog {
     }
 
     static class HttpServiceConfig {
-        String host;
-        String port;
         String basePath;
         String definitionUrl;
 
         HttpServiceConfig(String host, String port, String basePath) {
-            this.host = host;
-            this.port = port;
             this.basePath = basePath;
             this.definitionUrl = host + COLON + port + basePath;
         }

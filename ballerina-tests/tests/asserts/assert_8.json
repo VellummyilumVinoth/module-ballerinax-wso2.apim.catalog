@@ -1,7 +1,7 @@
 {
     "Sales0:www.example.com:9081/sales0": {
         "serviceMetadata": {
-            "name": "/sales0B803085FB8",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9081/sales0",
@@ -15,7 +15,7 @@
     },
     "Sales0:www.example.com:9082/sales0": {
         "serviceMetadata": {
-            "name": "/sales093A7349429",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9082/sales0",
@@ -29,7 +29,7 @@
     },
     "Sales0:www.example.com:9080/sales0": {
         "serviceMetadata": {
-            "name": "/sales0583E34E28D",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9080/sales0",

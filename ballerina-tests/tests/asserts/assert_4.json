@@ -1,7 +1,7 @@
 {
     "Sales0:www.example.com:9400/sales0": {
         "serviceMetadata": {
-            "name": "/sales084CC1DC557",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9400/sales0",
@@ -15,7 +15,7 @@
     },
     "Sales0:www.example.com:9403/sales0": {
         "serviceMetadata": {
-            "name": "/sales07569B63C70",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9403/sales0",
@@ -29,7 +29,7 @@
     },
     "Sales0:b7a.default:9405/sales0": {
         "serviceMetadata": {
-            "name": "/sales011D9245FEA",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9405/sales0",
@@ -43,7 +43,7 @@
     },
     "Sales0:www.example.com:9402/sales0": {
         "serviceMetadata": {
-            "name": "/sales014BE89C11D",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9402/sales0",
@@ -57,7 +57,7 @@
     },
     "Sales0 Base:www.example.com:9401/sales0/base": {
         "serviceMetadata": {
-            "name": "/sales0/base11E2F34644",
+            "name": "/sales0/base",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0 Base:www.example.com:9401/sales0/base",
@@ -71,7 +71,7 @@
     },
     "Sales0:b7a.default:9404/sales0": {
         "serviceMetadata": {
-            "name": "/sales0DAA200ED62",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9404/sales0",

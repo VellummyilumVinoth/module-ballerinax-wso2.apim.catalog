@@ -43,3 +43,6 @@ build
 *.env
 Config.toml
 examples/**/Dependencies.toml
+
+# Generated test artifacts
+ballerina-tests/tests/generated_artifacts/*.json

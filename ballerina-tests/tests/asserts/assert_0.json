@@ -1,7 +1,7 @@
 {
     "Sales0:localhost:9000/sales0": {
         "serviceMetadata": {
-            "name": "/sales0AEB9B235D2",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9000/sales0",

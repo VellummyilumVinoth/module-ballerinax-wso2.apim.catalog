@@ -1,7 +1,7 @@
 {
     "Sales0:b7a.default:9101/sales0": {
         "serviceMetadata": {
-            "name": "/sales0713336CFF7",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9101/sales0",
@@ -15,7 +15,7 @@
     },
     "Sales0:b7a.default:9102/sales0": {
         "serviceMetadata": {
-            "name": "/sales0331CCC2CDB",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9102/sales0",
@@ -29,7 +29,7 @@
     },
     "Sales0:b7a.default:9103/sales0": {
         "serviceMetadata": {
-            "name": "/sales00ECBCD6942",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9103/sales0",
@@ -43,7 +43,7 @@
     },
     "Sales0:b7a.default:9100/sales0": {
         "serviceMetadata": {
-            "name": "/sales0ED713FBCC4",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:b7a.default:9100/sales0",

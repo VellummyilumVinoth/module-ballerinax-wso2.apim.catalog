@@ -38,6 +38,7 @@ public final class Constants {
     public static final String DEFINITION_URL = "definitionUrl";
     public static final String SLASH = "/";
     public static final String SERVICE_CATALOG_PACKAGE_NAME = "wso2.apim.catalog";
+    public static final String CONTROL_PLANE_PACKAGE_NAME = "wso2.controlplane";
     public static final String SERVICE_CATALOG_METADATA_ANNOTATION_IDENTIFIER = "ServiceCatalogConfig";
     public static final String COLON = ":";
     public static final String MODULE_NAME = "ballerinax";
@@ -47,7 +48,7 @@ public final class Constants {
     public static final String HTTP_MODULE_NAME = "ballerina/http";
     public static final String HTTP_ANNOTATION_NAME = "ServiceConfig";
     public static final String HOST = "host";
-    public static final String LOCALHOST = "http://localhost";
+    public static final String LOCALHOST = "localhost";
     public static final String PORT = "port";
     public static final String OAS3 = "OAS3";
     public static final String BASIC = "BASIC";

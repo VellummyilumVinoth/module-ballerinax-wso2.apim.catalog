@@ -92,6 +92,36 @@ task initializeVariables {
 
 def ballerinaPackagePath = "ballerina"
 
+// ---------------------------------------------------------------------------
+// Build Docker images for the mock catalog API server and the OAuth2 token
+// server. Both images are built from standalone Ballerina programs under
+// ballerina-tests/mock-server/ and ballerina-tests/token-server/.
+// The images are used by the test suite to spin up one container per port.
+// ---------------------------------------------------------------------------
+
+task buildMockServerDockerImage {
+    doLast {
+        exec {
+            workingDir "${project.projectDir}/mock-server"
+            commandLine 'docker', 'build', '-t', 'ballerinax/apim-catalog-mock-server:latest', '.'
+        }
+    }
+}
+
+task buildTokenServerDockerImage {
+    doLast {
+        exec {
+            workingDir "${project.projectDir}/token-server"
+            commandLine 'docker', 'build', '-t', 'ballerinax/apim-catalog-token-server:latest', '.'
+        }
+    }
+}
+
+task buildDockerImages {
+    dependsOn(buildMockServerDockerImage)
+    dependsOn(buildTokenServerDockerImage)
+}
+
 task publishTestResourcePackageToLocal {
     dependsOn("::${packageName}-ballerina:build")
     doLast {
@@ -121,6 +151,7 @@ task ballerinaTest {
     dependsOn(updateTomlVerions)
     dependsOn(initializeVariables)
     dependsOn(publishTestResourcePackageToLocal)
+    dependsOn(buildDockerImages)
     finalizedBy(commitTomlFiles)
 
     doLast {
