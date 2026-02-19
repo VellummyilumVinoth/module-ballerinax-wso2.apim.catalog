@@ -54,6 +54,10 @@ This repository only contains the source code for the package.
         export packageUser=<Username>
         export packagePAT=<Personal access token>
 
+3. Docker (required for running integration tests):
+    * [Docker Desktop](https://www.docker.com/products/docker-desktop/) for Mac/Windows
+    * [Docker Engine](https://docs.docker.com/engine/install/) for Linux
+
 ### Building the source
 
 Execute the commands below to build from source.
@@ -73,6 +77,24 @@ Execute the commands below to build from source.
 4. Publish the generated artifacts to the Ballerina central repository:
 
         ./gradlew clean build -PpublishToCentral=true
+
+### Running tests
+
+Integration tests use Docker containers for mock WSO2 API Manager services. Docker is automatically managed by Gradle.
+
+```bash
+# Run all tests (Docker services start/stop automatically)
+./gradlew clean test
+
+# Run specific test groups
+./gradlew clean test -Pgroups=<test_group_names>
+
+# Manually manage Docker services
+./gradlew :wso2.apim.catalog-ballerina-tests:startMockServices
+./gradlew :wso2.apim.catalog-ballerina-tests:stopMockServices
+```
+
+**Note:** Docker operations are automatically skipped on Windows. See [ballerina-tests/resources/mock-services/README.md](ballerina-tests/resources/mock-services/README.md) for detailed Docker setup documentation.
 
 ## Contributing to Ballerina
 

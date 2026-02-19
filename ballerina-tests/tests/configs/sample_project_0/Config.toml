@@ -5,3 +5,15 @@ username="abcd"
 password="abcd"
 clientId="aa"
 clientSecret="aa"
+
+[ballerinax.wso2.apim.catalog.secureSocket.cert]
+enable = false
+
+# Real WSO2 APIM config (not used in tests)
+# [ballerinax.wso2.apim.catalog]
+# serviceUrl="https://127.0.0.1:9443/api/am/service-catalog/v1"
+# username="admin"
+# password="admin"
+# tokenUrl="https://localhost:9443/oauth2/token"
+# clientId="Nh9ilanXiTgoDr3RApjQZnJCXJga"
+# clientSecret="C6yqTKkZzM0d0lrzR9vJK_cndega"

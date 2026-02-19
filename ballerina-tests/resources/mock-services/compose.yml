@@ -1,0 +1,36 @@
+services:
+  mock-apim-services:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: wso2-apim-mock-services
+    ports:
+      - "8080:8080"
+      - "8081:8081"
+      - "8082:8082"
+      - "8083:8083"
+      - "8084:8084"
+      - "8085:8085"
+      - "8086:8086"
+      - "8087:8087"
+      - "8088:8088"
+      - "8089:8089"
+      - "8090:8090"
+      - "8091:8091"
+      - "8092:8092"
+      - "9444:9444"
+      - "9441:9441"
+    environment:
+      - BAL_ENV=test
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 40s
+    networks:
+      - apim-test-network
+
+networks:
+  apim-test-network:
+    driver: bridge

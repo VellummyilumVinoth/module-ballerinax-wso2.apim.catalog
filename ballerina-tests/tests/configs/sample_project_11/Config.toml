@@ -1,5 +1,5 @@
 [ballerinax.wso2.apim.catalog]
-serviceUrl="http://localhost:8091"
+serviceUrl="http://localhost:8090"
 tokenUrl="https://localhost:9444/oauth2/token"
 username="abcd"
 password="abcd"

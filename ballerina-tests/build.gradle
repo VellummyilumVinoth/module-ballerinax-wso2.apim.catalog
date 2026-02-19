@@ -116,11 +116,91 @@ task publishTestResourcePackageToLocal {
     }
 }
 
+task startMockServices {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def dockerComposeFile = "$project.projectDir/resources/mock-services/compose.yml"
+            def containerName = "wso2-apim-mock-services"
+
+            // Check if container is already running
+            def checkRunning = "docker ps --filter name=${containerName} --format {{.Names}}".execute()
+            checkRunning.waitFor()
+            def isRunning = checkRunning.text.trim()
+
+            if (!isRunning) {
+                println "Starting WSO2 APIM mock services container..."
+
+                // Build and start the container
+                exec {
+                    commandLine 'sh', '-c', "docker compose -f ${dockerComposeFile} up -d --build"
+                }
+
+                // Wait for services to be healthy
+                println "Waiting for mock services to start..."
+                sleep(15000)
+
+                // Verify health
+                def healthCheck = "docker inspect --format='{{.State.Health.Status}}' ${containerName}".execute()
+                healthCheck.waitFor()
+                def health = healthCheck.text.trim()
+
+                if (health == "healthy" || health == "") {
+                    println "Mock services are ready"
+                } else {
+                    println "Warning: Container health status is ${health}"
+                }
+            } else {
+                println "Mock services container is already running"
+            }
+        } else {
+            println "Skipping Docker operations on Windows"
+        }
+    }
+}
+
+task stopMockServices {
+    doLast {
+        if (!Os.isFamily(Os.FAMILY_WINDOWS)) {
+            def containerName = "wso2-apim-mock-services"
+
+            // Check if container is running
+            def checkRunning = "docker ps --filter name=${containerName} --format {{.Names}}".execute()
+            checkRunning.waitFor()
+            def isRunning = checkRunning.text.trim()
+
+            if (isRunning) {
+                println "Stopping WSO2 APIM mock services container..."
+
+                exec {
+                    commandLine 'sh', '-c', "docker stop ${containerName}"
+                }
+
+                // Wait for graceful shutdown
+                sleep(5000)
+
+                // Remove the container
+                exec {
+                    ignoreExitValue true
+                    commandLine 'sh', '-c', "docker rm ${containerName}"
+                }
+
+                println "Mock services stopped"
+            } else {
+                println "Mock services container is not running"
+            }
+        } else {
+            println "Skipping Docker operations on Windows"
+        }
+    }
+}
+
 task ballerinaTest {
     dependsOn(":${packageName}-ballerina:build")
     dependsOn(updateTomlVerions)
     dependsOn(initializeVariables)
     dependsOn(publishTestResourcePackageToLocal)
+    dependsOn(startMockServices)
+    finalizedBy(stopMockServices)
     finalizedBy(commitTomlFiles)
 
     doLast {

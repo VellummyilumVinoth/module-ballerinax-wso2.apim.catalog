@@ -99,6 +99,7 @@ subprojects {
         // Transitive dependencies
         ballerinaStdLibs "io.ballerina.stdlib:os-ballerina:${stdlibOsVersion}"
         ballerinaStdLibs "io.ballerina.stdlib:task-ballerina:${stdlibTaskVersion}"
+        ballerinaStdLibs "io.ballerina.stdlib:uuid-ballerina:${stdlibUuidVersion}"
     }
 }
 
