@@ -5,11 +5,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9500/sales0",
-            "serviceUrl": "www.example.com:9500/sales0",
+            "serviceUrl": "http://www.example.com:9500/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "www.example.com:9500/sales0"
+            "definitionUrl": "http://www.example.com:9500/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9500\"\npaths: {}\n"
     },
@@ -19,11 +19,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9506/sales0",
-            "serviceUrl": "localhost:9506/sales0",
+            "serviceUrl": "http://localhost:9506/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9506/sales0"
+            "definitionUrl": "http://localhost:9506/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9506\"\npaths: {}\n"
     },
@@ -33,11 +33,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9501/sales0",
-            "serviceUrl": "localhost:9501/sales0",
+            "serviceUrl": "http://localhost:9501/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9501/sales0"
+            "definitionUrl": "http://localhost:9501/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9501\"\npaths: {}\n"
     },
@@ -47,11 +47,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9504/sales0",
-            "serviceUrl": "www.example.com:9504/sales0",
+            "serviceUrl": "http://www.example.com:9504/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "www.example.com:9504/sales0"
+            "definitionUrl": "http://www.example.com:9504/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9504\"\npaths: {}\n"
     },
@@ -61,11 +61,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0::9502/sales0",
-            "serviceUrl": ":9502/sales0",
+            "serviceUrl": "http://:9502/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": ":9502/sales0"
+            "definitionUrl": "http://:9502/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9502\"\npaths: {}\n"
     },
@@ -75,11 +75,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9503/sales0",
-            "serviceUrl": "localhost:9503/sales0",
+            "serviceUrl": "http://localhost:9503/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9503/sales0"
+            "definitionUrl": "http://localhost:9503/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9503\"\npaths: {}\n"
     }

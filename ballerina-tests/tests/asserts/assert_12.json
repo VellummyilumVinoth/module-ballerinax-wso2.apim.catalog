@@ -5,11 +5,11 @@
          "description":"",
          "version":"0.1.0",
          "serviceKey":"Healthcare:localhost:9090/healthcare",
-         "serviceUrl":"localhost:9090/healthcare",
+         "serviceUrl":"http://localhost:9090/healthcare",
          "definitionType":"OAS3",
          "securityType":"NONE",
          "mutualSSLEnabled":false,
-         "definitionUrl":"localhost:9090/healthcare"
+         "definitionUrl":"http://localhost:9090/healthcare"
       },
       "inlineContent":"openapi: 3.0.1\ninfo:\n  title: Healthcare\n  version: 0.1.0\nservers:\n- url: \"http:\/\/{server}:{port}\/healthcare\"\n  variables:\n    server:\n      default: localhost\n    port:\n      default: \"9090\"\npaths: {}\n"
    }

@@ -47,8 +47,9 @@ public final class Constants {
     public static final String COMPLETE_MODULE_NAME = MODULE_NAME + SLASH + SERVICE_CATALOG_PACKAGE_NAME;
     public static final String HTTP_MODULE_NAME = "ballerina/http";
     public static final String HTTP_ANNOTATION_NAME = "ServiceConfig";
+    public static final String HTTP_PREFIX = "http://";
     public static final String HOST = "host";
-    public static final String LOCALHOST = "localhost";
+    public static final String LOCALHOST = "http://localhost"; 
     public static final String PORT = "port";
     public static final String OAS3 = "OAS3";
     public static final String BASIC = "BASIC";

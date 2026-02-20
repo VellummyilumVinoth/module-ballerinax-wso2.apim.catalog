@@ -57,7 +57,7 @@ function initializeMockServerContainer(string containerName, int port, int artif
             "-e", string `PORT=${port}`,
             "-e", string `ARTIFACT_INDEX=${artifactIndex}`,
             "-e", string `UNAUTHORIZED=${unauthorized}`,
-            "-v", string `${artifactsHostPath}:/artifacts`,
+            "-v", string `${toDockerPath(artifactsHostPath)}:/artifacts`,
             "-p", string `${port}:${port}`,
             "ballerinax/apim-catalog-mock-server:latest"
         ]
@@ -104,7 +104,7 @@ function initializeTokenServerContainer(string containerName, int port) returns 
             "-e", string `PORT=${port}`,
             "-e", "KEYSTORE_PATH=/resources/ballerinaKeystore.p12",
             "-e", "KEYSTORE_PASSWORD=ballerina",
-            "-v", string `${keystoreAbsPath}:/resources/ballerinaKeystore.p12:ro`,
+            "-v", string `${toDockerPath(keystoreAbsPath)}:/resources/ballerinaKeystore.p12:ro`,
             "-p", string `${port}:${port}`,
             "ballerinax/apim-catalog-token-server:latest"
         ]
@@ -262,4 +262,10 @@ function validateArtifacts(map<ServiceSchema> artifacts, int index, string baseP
 
 function isNameStartWithSamePrefix(string assertSchemaName, string schemaName, string basePathPrefix) returns boolean {
     return assertSchemaName.startsWith(basePathPrefix) && schemaName.startsWith(basePathPrefix);
+}
+
+// Convert a host path to a Docker-compatible volume mount path.
+// On Windows, Docker requires forward slashes in volume mount paths.
+function toDockerPath(string path) returns string {
+    return re`\\`.replaceAll(path, "/");
 }

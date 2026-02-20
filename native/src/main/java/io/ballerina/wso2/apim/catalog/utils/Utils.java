@@ -36,6 +36,7 @@ import static io.ballerina.wso2.apim.catalog.utils.Constants.COLON;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.COMPLETE_MODULE_NAME;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.HOST;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_ANNOTATION_NAME;
+import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_PREFIX; 
 import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_MODULE_NAME;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.JWT_AUTH;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.LOCALHOST;
@@ -91,7 +92,7 @@ public final class Utils {
         if (annotation == null || !annotation.containsKey(StringUtils.fromString(HOST))) {
             return LOCALHOST;
         }
-        return StringUtils.getStringValue(annotation.get(StringUtils.fromString(HOST)));
+        return HTTP_PREFIX + StringUtils.getStringValue(annotation.get(StringUtils.fromString(HOST))); 
     }
 
     public static OpenAPI getOpenApiDefinition(BMap<BString, Object> annotation) {

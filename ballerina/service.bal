@@ -45,15 +45,20 @@ Client apimClient = check new (serviceUrl = serviceUrl, config = {
     secureSocket: getServerCert(serverCert)
 });
 
+// function publishArtifacts(ServiceArtifact[] artifacts) returns error? {
+//     error? lastError = ();
+//     foreach ServiceArtifact artifact in artifacts {
+//         Service|error result = publishOrUpdateService(artifact);
+//         if result is error {
+//             lastError = result;
+//         }
+//     }
+//     return lastError;
+// }
 function publishArtifacts(ServiceArtifact[] artifacts) returns error? {
-    error? lastError = ();
     foreach ServiceArtifact artifact in artifacts {
-        Service|error result = publishOrUpdateService(artifact);
-        if result is error {
-            lastError = result;
-        }
+        _ = check publishOrUpdateService(artifact);
     }
-    return lastError;
 }
 
 isolated function getArtifacts() returns ServiceArtifact[] = @java:Method {

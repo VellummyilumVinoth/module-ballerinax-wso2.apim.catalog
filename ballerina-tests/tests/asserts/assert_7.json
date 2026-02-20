@@ -5,11 +5,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Main Openapi Yaml:localhost:9702/",
-            "serviceUrl": "localhost:9702/",
+            "serviceUrl": "http://localhost:9702/",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9702/"
+            "definitionUrl": "http://localhost:9702/"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Main Openapi Yaml\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9702\"\npaths: {}\n"
     },
@@ -19,11 +19,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Main Openapi Yaml:localhost:9700/",
-            "serviceUrl": "localhost:9700/",
+            "serviceUrl": "http://localhost:9700/",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9700/"
+            "definitionUrl": "http://localhost:9700/"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Main Openapi Yaml\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9700\"\npaths: {}\n"
     }

@@ -38,6 +38,7 @@ import io.swagger.v3.oas.models.OpenAPI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 import static io.ballerina.wso2.apim.catalog.utils.Constants.BALLERINA;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.CONTROL_PLANE_PACKAGE_NAME;
@@ -52,6 +53,9 @@ import static io.ballerina.wso2.apim.catalog.utils.Utils.getModuleAnnotation;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.getOpenApiDefinition;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.getSecurityType;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.COLON;
+import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_PREFIX;                                                                                       
+import static io.ballerina.wso2.apim.catalog.utils.Constants.LOCALHOST;                                                                                         
+import static io.ballerina.wso2.apim.catalog.utils.Constants.SLASH; 
 import static io.ballerina.wso2.apim.catalog.utils.Constants.CONFIG;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFAULT_STRING;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFINITION_FILE_CONTENT;
@@ -182,11 +186,13 @@ public final class ServiceCatalog {
                 StringUtils.fromString(httpServiceConfig.basePath));
     }
 
-    private static void updateServiceUrl(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) {
-        artifactValues.put(StringUtils.fromString(SERVICE_URL),
-                StringUtils.fromString(httpServiceConfig.definitionUrl));
-        artifactValues.put(StringUtils.fromString(DEFINITION_URL),
-                StringUtils.fromString(httpServiceConfig.definitionUrl));
+    private static void updateServiceUrl(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) { 
+        String basePathConfig = httpServiceConfig.basePath;
+        String basePath = basePathConfig.equals(SLASH) ? "" : basePathConfig;
+        boolean isLocalHost = Objects.equals(httpServiceConfig.host, LOCALHOST);
+        String serviceUrl = httpServiceConfig.host + (isLocalHost ? (COLON + httpServiceConfig.port) : "") + basePath;
+        artifactValues.put(StringUtils.fromString(SERVICE_URL), StringUtils.fromString(serviceUrl));
+        artifactValues.put(StringUtils.fromString(DEFINITION_URL), StringUtils.fromString(serviceUrl));
     }
 
     private static HttpServiceConfig updateHostAndPortAndBasePath(Object listenerDetails, Object attachPointDetails,
@@ -254,11 +260,16 @@ public final class ServiceCatalog {
 
     static class HttpServiceConfig {
         String basePath;
+        String host;
+        String port;
         String definitionUrl;
 
         HttpServiceConfig(String host, String port, String basePath) {
             this.basePath = basePath;
-            this.definitionUrl = host + COLON + port + basePath;
+            this.host = host;
+            this.port = port;
+            String hostWithoutProtocol = host.startsWith(HTTP_PREFIX) ? host.substring(HTTP_PREFIX.length()) : host;
+            this.definitionUrl = hostWithoutProtocol + COLON + port + basePath;
         }
     }
 }

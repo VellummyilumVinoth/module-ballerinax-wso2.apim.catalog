@@ -5,11 +5,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9202/sales0",
-            "serviceUrl": "localhost:9202/sales0",
+            "serviceUrl": "http://localhost:9202/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9202/sales0"
+            "definitionUrl": "http://localhost:9202/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9202\"\npaths:\n  \/orders:\n    get:\n      operationId: getOrders\n      responses:\n        \"202\":\n          description: Accepted\n    post:\n      operationId: postOrders\n      responses:\n        \"202\":\n          description: Accepted\n"
     },
@@ -19,11 +19,11 @@
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0 Base:localhost:9200/sales0/base",
-            "serviceUrl": "localhost:9200/sales0/base",
+            "serviceUrl": "http://localhost:9200/sales0/base",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9200/sales0/base"
+            "definitionUrl": "http://localhost:9200/sales0/base"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0 Base\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\/base\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9200\"\npaths:\n  \/orders:\n    get:\n      operationId: getOrders\n      responses:\n        \"202\":\n          description: Accepted\n    post:\n      operationId: postOrders\n      responses:\n        \"202\":\n          description: Accepted\n"
     }
