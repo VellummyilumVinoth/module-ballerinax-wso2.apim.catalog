@@ -36,14 +36,14 @@ rootProject.name = 'ballerinax-wso2.apim.catalog'
 include ':checkstyle'
 include ':wso2.apim.catalog-native'
 include ':wso2.apim.catalog-compiler-plugin'
-// include ':wso2.apim.catalog-ballerina-tests'
+include ':wso2.apim.catalog-ballerina-tests'
 include ':wso2.apim.catalog-ballerina'
 
 project(':checkstyle').projectDir = file("build-config${File.separator}checkstyle")
 project(':wso2.apim.catalog-native').projectDir = file('native')
 project(':wso2.apim.catalog-compiler-plugin').projectDir = file('compiler-plugin')
 project(':wso2.apim.catalog-ballerina').projectDir = file('ballerina')
-// project(':wso2.apim.catalog-ballerina-tests').projectDir = file("ballerina-tests")
+project(':wso2.apim.catalog-ballerina-tests').projectDir = file("ballerina-tests")
 
 gradleEnterprise {
     buildScan {

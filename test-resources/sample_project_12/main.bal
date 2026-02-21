@@ -16,7 +16,10 @@
 
 import ballerina/http;
 import ballerinax/wso2.apim.catalog as _;
+import ballerinax/wso2.controlplane as _;
 
-service on new http:Listener(9800) {
+listener http:Listener httpDefaultListener = http:getDefaultListener();
+
+service /healthcare on httpDefaultListener {
 
 }

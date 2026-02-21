@@ -1,85 +1,85 @@
 {
     "Sales0:www.example.com:9500/sales0": {
         "serviceMetadata": {
-            "name": "/sales0D5A3765F90",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9500/sales0",
-            "serviceUrl": "www.example.com:9500/sales0",
+            "serviceUrl": "http://www.example.com:9500/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "www.example.com:9500/sales0"
+            "definitionUrl": "http://www.example.com:9500/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9500\"\npaths: {}\n"
     },
     "Sales0:localhost:9506/sales0": {
         "serviceMetadata": {
-            "name": "/sales029E7BE3621",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9506/sales0",
-            "serviceUrl": "localhost:9506/sales0",
+            "serviceUrl": "http://localhost:9506/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9506/sales0"
+            "definitionUrl": "http://localhost:9506/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9506\"\npaths: {}\n"
     },
     "Sales0:localhost:9501/sales0": {
         "serviceMetadata": {
-            "name": "/sales04F3CC69644",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9501/sales0",
-            "serviceUrl": "localhost:9501/sales0",
+            "serviceUrl": "http://localhost:9501/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9501/sales0"
+            "definitionUrl": "http://localhost:9501/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9501\"\npaths: {}\n"
     },
     "Sales0:www.example.com:9504/sales0": {
         "serviceMetadata": {
-            "name": "/sales0BF34EAC386",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:www.example.com:9504/sales0",
-            "serviceUrl": "www.example.com:9504/sales0",
+            "serviceUrl": "http://www.example.com:9504/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "www.example.com:9504/sales0"
+            "definitionUrl": "http://www.example.com:9504/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9504\"\npaths: {}\n"
     },
     "Sales0::9502/sales0": {
         "serviceMetadata": {
-            "name": "/sales07AF1125C78",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0::9502/sales0",
-            "serviceUrl": ":9502/sales0",
+            "serviceUrl": "http://:9502/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": ":9502/sales0"
+            "definitionUrl": "http://:9502/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9502\"\npaths: {}\n"
     },
     "Sales0:localhost:9503/sales0": {
         "serviceMetadata": {
-            "name": "/sales010AB235A47",
+            "name": "/sales0",
             "description": "",
             "version": "0.1.0",
             "serviceKey": "Sales0:localhost:9503/sales0",
-            "serviceUrl": "localhost:9503/sales0",
+            "serviceUrl": "http://localhost:9503/sales0",
             "definitionType": "OAS3",
             "securityType": "NONE",
             "mutualSSLEnabled": false,
-            "definitionUrl": "localhost:9503/sales0"
+            "definitionUrl": "http://localhost:9503/sales0"
         },
         "inlineContent": "openapi: 3.0.1\ninfo:\n  title: Sales0\n  version: 0.1.0\nservers:\n- url: \"{server}:{port}\/sales0\"\n  variables:\n    server:\n      default: http:\/\/localhost\n    port:\n      default: \"9503\"\npaths: {}\n"
     }
