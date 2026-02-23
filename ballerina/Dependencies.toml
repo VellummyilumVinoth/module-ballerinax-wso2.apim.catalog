@@ -212,7 +212,7 @@ dependencies = [
 [[package]]
 org = "ballerina"
 name = "log"
-version = "2.16.1"
+version = "2.17.0"
 dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "jballerina.java"},
@@ -253,7 +253,7 @@ modules = [
 [[package]]
 org = "ballerina"
 name = "observe"
-version = "1.7.1"
+version = "1.7.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
