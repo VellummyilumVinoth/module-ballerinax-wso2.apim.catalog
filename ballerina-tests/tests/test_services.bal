@@ -274,25 +274,3 @@ function testSingleUnauthorizedService() returns error? {
     test:assertTrue(result is error);
     test:assertTrue((<error>result).message().includes("Unauthorized"));
 }
-
-// ---------------------------------------------------------------------------
-// sample12 — port 8089, artifact index 12
-// ---------------------------------------------------------------------------
-
-@test:BeforeGroups {value: ["sample12"]}
-function initSample12Container() returns error? {
-    check initializeMockServerContainer("apim-catalog-mock-12", 8089, 12);
-}
-
-@test:AfterGroups {value: ["sample12"]}
-function cleanSample12Container() returns error? {
-    check cleanDockerContainer("apim-catalog-mock-12");
-}
-
-@test:Config {groups: ["sample12"]}
-function testSample12() returns error? {
-    int index = 12;
-    error? result = runOSCommand(getProjName(index), getProjPath(index), getConfigFilePath(index));
-    test:assertTrue(result is error);
-    readAndValidateArtifacts(string `artifacts_${index}.json`, index, "/healthcare");
-}

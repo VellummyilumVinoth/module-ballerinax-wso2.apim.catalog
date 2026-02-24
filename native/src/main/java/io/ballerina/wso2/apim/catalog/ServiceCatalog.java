@@ -38,7 +38,8 @@ import io.swagger.v3.oas.models.OpenAPI;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
+import java.util.Locale;
+import java.util.UUID;
 
 import static io.ballerina.wso2.apim.catalog.utils.Constants.BALLERINA;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.CONTROL_PLANE_PACKAGE_NAME;
@@ -53,9 +54,7 @@ import static io.ballerina.wso2.apim.catalog.utils.Utils.getModuleAnnotation;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.getOpenApiDefinition;
 import static io.ballerina.wso2.apim.catalog.utils.Utils.getSecurityType;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.COLON;
-import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_PREFIX;                                                                                       
-import static io.ballerina.wso2.apim.catalog.utils.Constants.LOCALHOST;                                                                                         
-import static io.ballerina.wso2.apim.catalog.utils.Constants.SLASH; 
+import static io.ballerina.wso2.apim.catalog.utils.Constants.HTTP_PREFIX;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.CONFIG;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFAULT_STRING;
 import static io.ballerina.wso2.apim.catalog.utils.Constants.DEFINITION_FILE_CONTENT;
@@ -182,15 +181,14 @@ public final class ServiceCatalog {
     }
 
     private static void updateServiceName(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) {
+        String uniqueSuffix = UUID.randomUUID().toString().replace("-", "").
+                substring(0, 10).toUpperCase(Locale.ROOT); // To temporarily resolve service name uniqueness conflicts
         artifactValues.put(StringUtils.fromString(NAME),
-                StringUtils.fromString(httpServiceConfig.basePath));
+                StringUtils.fromString(httpServiceConfig.basePath + uniqueSuffix));
     }
 
-    private static void updateServiceUrl(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) { 
-        String basePathConfig = httpServiceConfig.basePath;
-        String basePath = basePathConfig.equals(SLASH) ? "" : basePathConfig;
-        boolean isLocalHost = Objects.equals(httpServiceConfig.host, LOCALHOST);
-        String serviceUrl = httpServiceConfig.host + (isLocalHost ? (COLON + httpServiceConfig.port) : "") + basePath;
+    private static void updateServiceUrl(BMap<BString, Object> artifactValues, HttpServiceConfig httpServiceConfig) {
+        String serviceUrl = httpServiceConfig.host + COLON + httpServiceConfig.port + httpServiceConfig.basePath;
         artifactValues.put(StringUtils.fromString(SERVICE_URL), StringUtils.fromString(serviceUrl));
         artifactValues.put(StringUtils.fromString(DEFINITION_URL), StringUtils.fromString(serviceUrl));
     }

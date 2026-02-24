@@ -17,7 +17,7 @@
 # Stage 1: Build the Ballerina fat JAR
 FROM ballerina/ballerina:2201.13.1 AS builder
 WORKDIR /app
-COPY . .
+COPY --chown=ballerina:ballerina . .
 RUN bal build
 
 # Stage 2: Minimal runtime image

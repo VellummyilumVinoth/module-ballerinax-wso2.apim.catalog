@@ -8,19 +8,6 @@ dependencies-toml-version = "2"
 distribution-version = "2201.13.1"
 
 [[package]]
-org = "admin"
-name = "sample_project_12"
-version = "0.1.0"
-dependencies = [
-	{org = "ballerina", name = "http"},
-	{org = "ballerinax", name = "wso2.apim.catalog"},
-	{org = "ballerinax", name = "wso2.controlplane"}
-]
-modules = [
-	{org = "admin", packageName = "sample_project_12", moduleName = "sample_project_12"}
-]
-
-[[package]]
 org = "ballerina"
 name = "auth"
 version = "2.14.0"
@@ -121,6 +108,9 @@ dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "lang.value"}
 ]
+modules = [
+	{org = "ballerina", packageName = "io", moduleName = "io"}
+]
 
 [[package]]
 org = "ballerina"
@@ -198,6 +188,9 @@ version = "0.0.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
+modules = [
+	{org = "ballerina", packageName = "lang.runtime", moduleName = "lang.runtime"}
+]
 
 [[package]]
 org = "ballerina"
@@ -219,12 +212,15 @@ dependencies = [
 [[package]]
 org = "ballerina"
 name = "log"
-version = "2.16.1"
+version = "2.17.0"
 dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "lang.value"},
 	{org = "ballerina", name = "observe"}
+]
+modules = [
+	{org = "ballerina", packageName = "log", moduleName = "log"}
 ]
 
 [[package]]
@@ -236,6 +232,9 @@ dependencies = [
 	{org = "ballerina", name = "jballerina.java"},
 	{org = "ballerina", name = "lang.int"},
 	{org = "ballerina", name = "log"}
+]
+modules = [
+	{org = "ballerina", packageName = "mime", moduleName = "mime"}
 ]
 
 [[package]]
@@ -254,7 +253,7 @@ dependencies = [
 [[package]]
 org = "ballerina"
 name = "observe"
-version = "1.7.1"
+version = "1.7.0"
 dependencies = [
 	{org = "ballerina", name = "jballerina.java"}
 ]
@@ -266,6 +265,9 @@ version = "1.10.1"
 dependencies = [
 	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "jballerina.java"}
+]
+modules = [
+	{org = "ballerina", packageName = "os", moduleName = "os"}
 ]
 
 [[package]]
@@ -307,36 +309,17 @@ dependencies = [
 
 [[package]]
 org = "ballerinax"
-name = "wso2.apim.catalog"
-version = "1.2.0"
+name = "apim_catalog_mock_server"
+version = "1.0.0"
 dependencies = [
-	{org = "ballerina", name = "constraint"},
 	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "mime"},
-	{org = "ballerina", name = "oauth2"},
-	{org = "ballerina", name = "url"}
-]
-modules = [
-	{org = "ballerinax", packageName = "wso2.apim.catalog", moduleName = "wso2.apim.catalog"}
-]
-
-[[package]]
-org = "ballerinax"
-name = "wso2.controlplane"
-version = "1.1.0"
-dependencies = [
-	{org = "ballerina", name = "file"},
-	{org = "ballerina", name = "http"},
-	{org = "ballerina", name = "jballerina.java"},
-	{org = "ballerina", name = "jwt"},
-	{org = "ballerina", name = "lang.array"},
+	{org = "ballerina", name = "io"},
 	{org = "ballerina", name = "lang.runtime"},
 	{org = "ballerina", name = "log"},
-	{org = "ballerina", name = "os"},
-	{org = "ballerina", name = "uuid"}
+	{org = "ballerina", name = "mime"},
+	{org = "ballerina", name = "os"}
 ]
 modules = [
-	{org = "ballerinax", packageName = "wso2.controlplane", moduleName = "wso2.controlplane"}
+	{org = "ballerinax", packageName = "apim_catalog_mock_server", moduleName = "apim_catalog_mock_server"}
 ]
 
