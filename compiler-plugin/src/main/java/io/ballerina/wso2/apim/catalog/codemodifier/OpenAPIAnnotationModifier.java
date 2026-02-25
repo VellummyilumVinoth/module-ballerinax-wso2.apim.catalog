@@ -43,6 +43,7 @@ import io.ballerina.projects.Package;
 import io.ballerina.projects.Project;
 import io.ballerina.projects.plugins.ModifierTask;
 import io.ballerina.projects.plugins.SourceModifierContext;
+import io.ballerina.tools.diagnostics.DiagnosticSeverity;
 import io.ballerina.tools.text.TextDocument;
 import io.ballerina.wso2.apim.catalog.utils.Constants;
 import io.swagger.v3.core.util.Yaml;
@@ -228,7 +229,9 @@ public class OpenAPIAnnotationModifier implements ModifierTask<SourceModifierCon
                 serviceDeclarationNode, openApiFilename, filepath, semanticModel, project);
         oasResult.setServiceName(openApiFilename);
         Optional<OpenAPI> openApiOpt = oasResult.getOpenAPI();
-        if (!oasResult.getDiagnostics().isEmpty() || openApiOpt.isEmpty()) {
+        boolean hasErrors = oasResult.getDiagnostics().stream()
+                .anyMatch(d -> DiagnosticSeverity.ERROR.equals(d.getDiagnosticSeverity()));
+        if (hasErrors || openApiOpt.isEmpty()) {
             return null;
         }
         OpenAPI openApi = openApiOpt.get();
